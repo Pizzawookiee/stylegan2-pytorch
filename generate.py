@@ -76,7 +76,7 @@ if __name__ == "__main__":
     try:
         g_ema.load_state_dict(checkpoint["g_ema"])
     except RuntimeError as e:
-        print ('Ignoring "' + e + '"')
+        print ('Ignoring "' + str(e) + '"')
 
     if args.truncation < 1:
         with torch.no_grad():
