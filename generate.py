@@ -75,7 +75,7 @@ if __name__ == "__main__":
     
     try:
         g_ema.load_state_dict(checkpoint["g_ema"])
-    except RunTimeError as e:
+    except RuntimeError as e:
         print ('Ignoring "' + e + '"')
 
     if args.truncation < 1:
