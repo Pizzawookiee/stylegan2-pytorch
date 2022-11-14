@@ -72,8 +72,11 @@ if __name__ == "__main__":
         args.size, args.latent, args.n_mlp, channel_multiplier=args.channel_multiplier
     ).to(device)
     checkpoint = torch.load(args.ckpt)
-
-    g_ema.load_state_dict(checkpoint["g_ema"])
+    
+    try:
+        g_ema.load_state_dict(checkpoint["g_ema"])
+    except RunTime Error as e:
+        print ('Ignoring "' + e + '"')
 
     if args.truncation < 1:
         with torch.no_grad():
