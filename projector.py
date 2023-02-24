@@ -146,7 +146,7 @@ if __name__ == "__main__":
 
     imgs = torch.stack(imgs, 0).to(device)
 
-    g_ema = Generator(args.size, 512, 8)
+    g_ema = Generator(args.size, 512, 2, channel_multiplier=1)
     g_ema.load_state_dict(torch.load(args.ckpt)["g_ema"], strict=False)
     g_ema.eval()
     g_ema = g_ema.to(device)
